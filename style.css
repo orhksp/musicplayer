@@ -1,0 +1,199 @@
+body {
+    background-color: #ddd; /* Arka plan rengini ayarla */
+    margin: 0; /* Kenar boşluklarını sıfırla */
+    font-family: 'Roboto', sans-serif; /* Yazı tipini ayarla */
+    display: flex; /* Flexbox düzenini kullan */
+    align-items: center; /* Dikeyde ortala */
+    justify-content: center; /* Yatayda ortala */
+    height: 100vh; /* Yüksekliği tam ekran yap */
+    background: url("assets/playerbackgound.jpg");
+}
+
+.container {
+    position: relative; /* Konumlandırmayı göreceli yap */
+    padding: 10px; /* İç boşluk ekle */
+    width: 450px; /* Sabit genişlik */
+}
+
+#visualizer {
+    width: 100%; /* Genişliği tam yap */
+    height: 100px; /* Yüksekliği 100px yap */
+    background-color: #000; /* Arka plan rengini siyah yap */
+    border-radius: 10px; /* Kenarları yuvarlat */
+    margin-bottom: 20px; /* Alt boşluk ekle */
+}
+
+.song-list {
+    background-color: #000; /* Arka plan rengini siyah yap */
+    margin: 0 15px; /* Kenar boşlukları ekle */
+    cursor: pointer; /* Fare imlecini işaretçi yap */
+    border-radius: 15px 15px 0 0; /* Üst kenarları yuvarlat */
+}
+
+.song-list ul {
+    list-style-type: none; /* Liste işaretlerini kaldır */
+    padding: 0; /* İç boşlukları sıfırla */
+}
+
+.song-list li {
+    display: flex; /* Flexbox düzenini kullan */
+    justify-content: space-between; /* Elemanları yatayda dağıt */
+    align-items: center; /* Elemanları dikeyde ortala */
+    padding: 10px; /* İç boşluk ekle */
+    border-bottom: 1px solid #ccc; /* Alt kenara çizgi ekle */
+    cursor: pointer; /* Fare imlecini işaretçi yap */
+    color: #fff; /* Font rengini beyaz yap */
+}
+
+.song-list li:hover {
+    background-color: #505050; /* Arka plan rengini gri yap */
+    color: #fff; /* Font rengini beyaz yap */
+}
+
+.song-list .delete-btn {
+    color: #189945; /* Sil butonunun rengini yeşil yap */
+    cursor: pointer; /* Fare imlecini işaretçi yap */
+    margin-left: 10px; /* Sol boşluk ekle */
+    flex-shrink: 0; /* "Sil" yazısının en sağda kalmasını sağlar */
+}
+
+.song-list .delete-btn:hover {
+    color: #189945; /* Sil butonunun rengini yeşil yap */
+}
+
+.container .song-info {
+    background-color: #000; /* Arka plan rengini siyah yap */
+    margin: 0 15px; /* Kenar boşlukları ekle */
+    padding: 15px 15px 5px 150px; /* İç boşlukları ekle */
+    border-radius: 15px 15px 0 0; /* Üst kenarları yuvarlat */
+    color: #fff; /* Font rengini beyaz yap */
+}
+
+.container .song-info .song-name {
+    color: #b9b9b9; /* Font rengini gri yap */
+    font-size: 14px; /* Font boyutunu ayarla */
+    margin: 3px 0 20px; /* Kenar boşlukları ekle */
+    white-space: nowrap; /* Tek satırda tut */
+    overflow: hidden; /* Taşan kısmı gizle */
+    text-overflow: ellipsis; /* Üç nokta ekle */
+    max-width: 250px; /* Maksimum genişlik */
+}
+
+.container .song-info .artist-name {
+    color: #fff; /* Font rengini beyaz yap */
+    font-weight: bold; /* Font kalınlığını artır */
+    font-size: 18px; /* Font boyutunu ayarla */
+}
+
+.container .song-info .progress-bar {
+    background-color: #505050; /* Arka plan rengini gri yap */
+    border-radius: 20px; /* Kenarları yuvarlat */
+    cursor: pointer; /* Fare imlecini işaretçi yap */
+}
+
+.container .song-info .progress-bar .fill-bar {
+    width: 0; /* Başlangıç genişliğini sıfır yap */
+    height: 6px; /* Yüksekliği 6px yap */
+    border-radius: 20px; /* Kenarları yuvarlat */
+    background: #1db954; /* Arka plan rengini yeşil yap */
+}
+
+.container .song-info .time {
+    font-size: 15px; /* Font boyutunu ayarla */
+    color: #b9b9b9; /* Font rengini gri yap */
+    margin: 10px 0; /* Kenar boşlukları ekle */
+}
+
+.container .disk {
+    max-width: 120px; /* Maksimum genişlik */
+}
+
+.container .disk .cover {
+    width: 145px; /* Genişliği 145px yap */
+    height: 145px; /* Yüksekliği 145px yap */
+    position: absolute; /* Konumlandırmayı mutlak yap */
+    top: 10px; /* Üstten boşluk ekle */
+    left: 10px; /* Soldan boşluk ekle */
+    background: url("assets/1.jpg"); /* Arka plan resmi ekle */
+    background-repeat: no-repeat; /* Arka plan resmini tekrar etme */
+    background-position: bottom center; /* Arka plan resmini ortala */
+    background-size: cover; /* Arka plan resmini kapla */
+    border: 3px solid #fff; /* Kenarlık ekle */
+    border-radius: 50%; /* Kenarları yuvarlat */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Gölge ekle */
+    transition: all 0.2s ease-in-out; /* Geçiş animasyonu ekle */
+}
+
+.container .disk .cover.playing {
+    animation: rotate 3s linear infinite; /* Döndürme animasyonu ekle */
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg); /* Başlangıç açısı */
+    }
+    100% {
+        transform: rotate(360deg); /* Bitiş açısı */
+    }
+}
+
+.container .controls {
+    display: flex; /* Flexbox düzenini kullan */
+    align-items: center; /* Elemanları dikeyde ortala */
+    justify-content: center; /* Elemanları yatayda ortala */
+    gap: 8px; /* Elemanlar arası boşluk ekle */
+    background-color: #292929; /* Arka plan rengini koyu gri yap */
+    width: 450px; /* Genişliği 450px yap */
+    height: 100px; /* Yüksekliği 100px yap */
+    border-radius: 20px; /* Kenarları yuvarlat */
+    text-align: center; /* Metni ortala */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); /* Gölge ekle */
+}
+
+.container .controls #play {
+    background-color: #1db954; /* Arka plan rengini yeşil yap */
+    color: #fff; /* Font rengini beyaz yap */
+    padding: 15px 17px 14px 18px; /* İç boşlukları ekle */
+    font-size: 28px; /* Font boyutunu ayarla */
+    border-radius: 50%; /* Kenarları yuvarlat */
+    transition: all 0.3s ease; /* Geçiş animasyonu ekle */
+}
+
+.container .controls #play:hover {
+    background: #189945; /* Arka plan rengini koyu yeşil yap */
+}
+
+.container .controls i {
+    padding: 30px 8px; /* İç boşlukları ekle */
+    font-size: 35px; /* Font boyutunu ayarla */
+    cursor: pointer; /* Fare imlecini işaretçi yap */
+    color: #919191; /* Font rengini gri yap */
+    transition: all 0.3s ease; /* Geçiş animasyonu ekle */
+}
+
+.container .controls i:hover {
+    color: #fff; /* Font rengini beyaz yap */
+}
+
+#add-song-btn {
+    margin-top: 20px; /* Üstten boşluk ekle */
+    padding: 10px 20px; /* İç boşlukları ekle */
+    background-color: #1db954; /* Arka plan rengini yeşil yap */
+    color: white; /* Font rengini beyaz yap */
+    border: none; /* Kenarlık kaldır */
+    border-radius: 5px; /* Kenarları yuvarlat */
+    cursor: pointer; /* Fare imlecini işaretçi yap */
+    font-size: 16px; /* Font boyutunu ayarla */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Geçiş animasyonu ekle */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Gölge ekle */
+}
+
+#add-song-btn:hover {
+    background-color: #189945; /* Arka plan rengini koyu yeşil yap */
+    transform: scale(1.05); /* Boyutu büyüt */
+}
+
+#add-song-btn:active {
+    background-color: #158a3b; /* Arka plan rengini daha koyu yeşil yap */
+    transform: scale(1); /* Boyutu sıfırla */
+}
